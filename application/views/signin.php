@@ -15,7 +15,7 @@
 					<button type="button" class="btn btn-link btn-block"><img src="../images/logo.jpg" class="center-block" class="rounded" data-toggle="tooltip" title="Groupie! Click to register."/></button>
 		</div>
 		<div class="row">
-				<form class="form-horizontal" method = "POST">
+				<form class="form-horizontal" method = "POST" action="<?php echo base_url('signin/login'); ?>">
 					<div class="form-group">
 						<label for="inputSchoolID" class="col-sm-5 control-label">School ID</label>
 						<div class="col-sm-2">
