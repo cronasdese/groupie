@@ -1,31 +1,28 @@
 <?php
-class Registration extends CI_Model{
-function __construct() {
-parent::__construct();
-}
 
-function login($ID,$password)
-{
-	$data = array(
-		'ID' => $ID,
-		'password' => $password
-		);
+class Login extends CI_Model{
+	function __construct() {
+		parent::__construct();
+	}
 
-	$this->db->insert('accounts',$data);
-}
-
-
-function validateAccount($str)
+	function validateAccount($ID, $pass)
 	{
-		if ($str == 'ID')
-		{
-		
+		$query = $this->db->query('SELECT * FROM `accounts` WHERE ID = "'. $ID .'" AND password = "'. $pass .'"');
+		if($query->num_rows() > 0){
+			return $query->result();
 		}
-		else
-		{
-			die('Unregistered ID');
+		else{
+			return NULL;
 		}
+	}
 
+	function searchGroups($ID){
+		$query = $this->db->query('SELECT * FROM `groups` WHERE ID = "'. $ID .'"');
+		if($query->num_rows() > 0){
+			return $query->result();
+		}
+		else{
+			return NULL;
+		}
 	}
 }
-?>

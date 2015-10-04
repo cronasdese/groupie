@@ -49,6 +49,13 @@
 		        <button type="submit" class="btn btn-default">Submit</button>
 		      </form>
 		      <ul class="nav navbar-nav navbar-right">
+		      	<li><?php 
+		      		if(is_array($account_info) || is_object($account_info)){
+		      			foreach($account_info as $object){
+		      				echo '<a href="#">' . $object->full_name . '</a>';
+		      			}
+		      		}
+		      	 ?></li>
 		        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a></li>
 		      </ul>
 		    </div>
@@ -63,22 +70,16 @@
 				<!-- GROUPS -->
 
 				<ul class="list-group">
-				  <li class="list-group-item">
-				    <span class="badge">14</span>
-				    Group 1
-				  </li>
-				  <li class="list-group-item">
-				    <span class="badge">2</span>
-				    Group 2
-				  </li>
-				  <li class="list-group-item">
-				    <span class="badge">1</span>
-				    Group 3
-				  </li>
-				  <li class="list-group-item">
-				    <span class="badge">29</span>
-				    Group 4
-				  </li>
+					<?php
+						if(is_array($group) || is_object($group)){
+			      			foreach($group as $object_group){
+			      				echo '<li class="list-group-item">
+							    <span class="badge">14</span>
+							    '. $object_group->group_name .'
+							  	</li>';
+			      			}
+			      		}
+					?>
 				</ul>
 			</div>
 
