@@ -4,7 +4,7 @@ class Home extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
-		$this->load->model('home');
+		$this->load->model('home_model');
 		$this->load->helper('url');
 		$this->load->library('form_validation');
 	}
@@ -33,6 +33,15 @@ class Home extends CI_Controller {
 	{
 		$ID = $this->input->post('');
 		$postcont = $this->input->post('post');
-		$
+	}
+
+	public function logout(){
+		$this->load->view('login');
+	}
+
+	public function search(){
+		$search = $this->input->get('search');
+		$data['search_contents'] = $this->home_model->searchGroup($search);
+		$this->load->view('search', $data);
 	}
 }

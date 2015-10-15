@@ -89,29 +89,25 @@
 			<!-- NEWS FEED -->
 
 			<?php
-				if(is_array($home_contents) || is_object($home_contents)){
-					foreach($home_contents as $object_home){
-						echo'<div class="col-sm-offset-2">
-							<blockquote>
-								<p>' . $object_home->post_content .'</p>
-								<small>' . $object_home->poster_name . ' posted in <cite title="Source Title">'. $object_home->group_name .'<br/><br/></cite></small>
-								<form method="POST" action="<'. base_url('Home/getComment') .'>">
-									<input type="text" class="form-control hidden" name="postid" id="search" value="'. $object_home->post_id .'">
-									<button type="button" class="btn btn-default" data-toggle="collapse" aria-pressed="false" autocomplete="off" data-target="#demo"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Comment</button>
-								</form>
-								<div id="demo" class="collapse out">
-									<div class="forn-group">
-										<label for="comment"></label>
-										<textarea class="form-control" rows="5" id="comment" placeholder="Enter Comment..."></textarea>
-										<p></p>
-										<div class="pull-right">
-											<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
-										</div>
-									</div>
-								</div>
-							</blockquote>
+				if(is_array($search_contents) || is_object($search_contents)){
+					foreach($search_contents as $object){
+						echo '<div class="panel panel-default">
+						<div class="panel-heading lead">
+						  	' . $object->group_ID . ', ' . $object->group_name .'
+						  	<button type="button" class="open-DeleteModal btn btn-default pull-right" data-toggle="modal" data-target="#deleteModal" data-id="'. $object->id .'">Delete</button>
+						  	<button type="button" class="open-UpdateModal btn btn-primary pull-right" data-toggle="modal" data-target="#updateModal" data-id="
 						</div>';
 					}
+				}
+				else{
+					echo'<div class="panel panel-default">
+						<div class="panel-heading lead">
+							Error
+						</div>
+						<div class="panel-body">
+							Group does not exist.
+						</div>
+					</div>';
 				}
 			?>
 		</div>

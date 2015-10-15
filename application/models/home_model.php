@@ -1,6 +1,6 @@
 <?php
 
-class Home extends CI_Model(){
+class Home_model extends CI_Model {
 
 	function __construct(){
 		parent::__construct();
@@ -28,7 +28,17 @@ class Home extends CI_Model(){
 	}
 
 	function showComment($post_id){
-		$query = $this->db->query('SELECT * FROM comments INNER JOIN posts ON posts.post_id = comments.post_id WHERE comments.post_id = "'. $post_id .'"')
+		$query = $this->db->query('SELECT * FROM comments INNER JOIN posts ON posts.post_id = comments.post_id WHERE comments.post_id = "'. $post_id .'"');
+		if($query->num_rows() > 0){
+			return $query->result();
+		}
+		else{
+			return NULL;
+		}
+	}
+
+	function searchGroup(){
+		$query = $this->db->query('SELECT * FROM groups WHERE (group_ID LIKE "%'.$search.'%") OR (group_name LIKE "%'.$search.'%") ORDER BY group_name');
 		if($query->num_rows() > 0){
 			return $query->result();
 		}

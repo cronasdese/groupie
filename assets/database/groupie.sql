@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2015 at 09:36 PM
+-- Generation Time: Oct 15, 2015 at 05:52 PM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -74,7 +74,8 @@ INSERT INTO `comments` (`ID`, `comment_content`, `comment_date`, `comment_ID`, `
 --
 
 CREATE TABLE IF NOT EXISTS `events` (
-  `event_ID` varchar(15) NOT NULL,
+  `event_ID` int(10) NOT NULL,
+  `groups_id` int(10) NOT NULL,
   `details` varchar(255) NOT NULL,
   `schedule` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -166,6 +167,12 @@ ALTER TABLE `comments`
   ADD PRIMARY KEY (`comment_ID`);
 
 --
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD PRIMARY KEY (`event_ID`);
+
+--
 -- Indexes for table `groups`
 --
 ALTER TABLE `groups`
@@ -186,6 +193,11 @@ ALTER TABLE `posts`
 --
 ALTER TABLE `comments`
   MODIFY `comment_ID` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `event_ID` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `groups`
 --
