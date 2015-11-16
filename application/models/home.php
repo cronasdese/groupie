@@ -7,16 +7,33 @@ class Home extends CI_Model(){
 	}
 
 
-	function addAccounts($ID,$password,$fullname,$email,$contact,$type){
+	function addComment($ID,$commentcont,$commentd){
 		$data = array(
 			'ID' => $ID,
-			'email_address' => $email,
-			'contact_number' => $contact,
-			'full_name' => $fullname,
-			'password' => $password	,
-			'user_type' => $type
+			'comment_content' => $commentcont,
+			'comment_date' => $commentd
 			);
 
-		$this->db->insert('accounts',$data);
+		$this->db->insert('comments',$data);
+	}
+
+	function showPost($account_id){
+		$query = $this->db->query('SELECT * from posts INNER JOIN groups ON groups.group_id = posts.group_ID INNER JOIN accounts ON accounts.ID = groups.ID WHERE accounts.ID = "'.$account_id.'"');
+		if($query->num_rows() > 0){
+			return $query->result();
+		}
+		else{
+			return NULL;
+		}
+	}
+
+	function showComment($post_id){
+		$query = $this->db->query('SELECT * FROM comments INNER JOIN posts ON posts.post_id = comments.post_id WHERE comments.post_id = "'. $post_id .'"')
+		if($query->num_rows() > 0){
+			return $query->result();
+		}
+		else{
+			return NULL;
+		}
 	}
 }

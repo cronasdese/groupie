@@ -22,7 +22,7 @@
 			      	if(form_error('inputSchoolID') == FALSE){
 			      		echo '<div class="form-group">
 			      			<label class="control-label" >School ID:</label>
-			      			<input type="text" class="form-control" name="inputSchoolID" placeholder="School ID" >
+			      			<input type="text" class="form-control" name="inputSchoolID" placeholder="School ID" value="'. set_value('inputSchoolID') .'">
 			      		</div>';
 			      	}
 			      	else{
@@ -32,13 +32,15 @@
 			      			<span class="help-block">'. form_error('inputSchoolID') .'</span>
 			      			</div>';
 			      	}
+			      	?>
+			      	<?php
 			   		if(form_error('inputPassword') == FALSE)
-			      	{
-			      	echo '<div class="form-group">
+			      {
+			      echo '<div class="form-group">
 			      		<label class="control-label" >Password:</label>
 			      		<input type="password" class = "form-control" name = "inputPassword" placeholder="Password">
 			      		<span class="help-block">Password must be atleast 7 alpha-numeric characters.</span></div>';
-			      }
+			      }	
 			      else
 			      {
 			      	echo '<div class="form-group has-error">
@@ -69,7 +71,7 @@
 			      {
 			      	echo '<div class="form-group">
 			      <label class="control-label">Full Name:</label>
-			      <input type="text" class="form-control" name="inputFullName" placeholder="Full Name"></div>';
+			      <input type="text" class="form-control" name="inputFullName" placeholder="Full Name" value="'. set_value('inputFullName') .'"></div>';
 			      }
 			      else
 			      {
@@ -85,7 +87,7 @@
 			      	{
 			      		echo '<div class="form-group">
 			      <label class="control-label" for="inputError"  >Email Address:</label>
-			      <input type="text" class="form-control" name="inputEmail" placeholder="Email Address"></div>';
+			      <input type="text" class="form-control" name="inputEmail" placeholder="Email Address" value="'. set_value('inputEmail') .'"></div>';
 			      	}
 			      	else{
 			      		echo '<div class="form-group has-error">
@@ -100,7 +102,7 @@
 			      	{
 			      		echo '<div class="form-group">
 			      <label class="control-label">Contact Number:</label>
-			      <input type="text" class="form-control" name="inputContact" placeholder="Contact Number"></br></div>';
+			      <input type="text" class="form-control" name="inputContact" placeholder="Contact Number" value="'. set_value('inputContact') .'"></br></div>';
 			      	}
 			      	else
 			      	{

@@ -1,0 +1,79 @@
+body{
+	background-color: #4C0000;
+	padding-top: 50px;
+}
+
+.navbar-nav{
+	margin-left: 50px;
+}
+
+.text-white{
+	color: white;
+}
+
+.nav-pills{
+	margin-left: -20px;
+    background-color: #D08504;
+}
+
+.red li.active a,
+.red li.active a:hover {
+    background-color: #222222;
+    color: white;
+}
+
+.red li a{
+	color: black;
+}
+
+.nav-pills > li > a {
+	-webkit-border-radius: 0;
+	-moz-border-radius: 0;
+	border-radius: 0;
+}
+.status{
+	margin-top:20px;
+}
+.secondarystatus{
+	margin-top: 15px;
+	margin-bottom:30px;
+}
+.statusli{
+	margin-top:5px;
+}
+.panel-body{
+	background-color: #222;
+	color: white;
+}
+.triange-right {
+	width: 0; 
+	height: 0; 
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 10px solid blue;
+}
+
+.triangle-left {
+	width: 0; 
+	height: 0; 
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent; 
+	border-right:10px solid black; 
+}
+table{
+	background-color: white;
+	height: 600px;
+
+}
+table thead{
+	height: 45px;
+
+}
+table th {
+
+width: auto ;
+}
+.notification{
+	background-color: white;
+	border-left: 5px;
+}

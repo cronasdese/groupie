@@ -21,12 +21,12 @@ class Register extends CI_Controller {
 		$contact = $this->input->post('inputContact');
 		
 		
-		$this->form_validation->set_rules('inputSchoolID','ID','required|exact_length[10]|callback_schoolid_check|numeric');
+		$this->form_validation->set_rules('inputSchoolID','ID','required|exact_length[10]|callback_schoolid_check');
 		$this->form_validation->set_rules('inputPassword', 'Password', 'required|min_length[7]');
 		$this->form_validation->set_rules('inputConfirmPassword','Confirm Password','required|matches[inputPassword]');
-		$this->form_validation->set_rules('inputFullName', 'FullName', 'required|min_length[5]|max_length[255]|alpha');
+		$this->form_validation->set_rules('inputFullName', 'FullName', 'required|min_length[5]|max_length[255]');
 		$this->form_validation->set_rules('inputEmail','Email Address','required|valid_email');
-		$this->form_validation->set_rules('inputContact', 'Mobile No.', 'required|exact_length[11]');
+		$this->form_validation->set_rules('inputContact', 'Mobile No.', 'required|exact_length[11]|numeric');
 
 		if ($this->form_validation->run() == FALSE) {
 
@@ -44,9 +44,9 @@ class Register extends CI_Controller {
 		}
 	}
 
-	public function schoolid_check($str){
+	/*public function schoolid_check($str){
 		$this->registration->validateAccount($str);
-	}	
+	}*/	
 }
 
 

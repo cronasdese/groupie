@@ -23,7 +23,7 @@ class Registration extends CI_Model{
 	function validateAccount($str)	{
 		if ($str == '12-027-013')
 		{
-			die(ross);
+			die('ross');
 		}
 
 	}

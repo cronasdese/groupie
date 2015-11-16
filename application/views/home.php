@@ -49,13 +49,14 @@
 		        <button type="submit" class="btn btn-default">Submit</button>
 		      </form>
 		      <ul class="nav navbar-nav navbar-right">
-		      	<li><?php 
+		      	<?php 
 		      		if(is_array($account_info) || is_object($account_info)){
 		      			foreach($account_info as $object){
-		      				echo '<a href="#">' . $object->full_name . '</a>';
+		      				echo '<li><a href="#">' . $object->ID . '</a></li>
+		      				<li><a href="#">' . $object->full_name . '</a></li>';
 		      			}
 		      		}
-		      	 ?></li>
+		      	 ?>
 		        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span>&nbsp;Logout</a></li>
 		      </ul>
 		    </div>
@@ -85,41 +86,32 @@
 
 			<!-- NEWS FEED -->
 
-			<div class="col-sm-offset-2">
-				<blockquote>
-				  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-				  <small>Marco Polo Bustillo in <cite title="Source Title">Group 1<br/><br/></cite></small>
-				  <button type="button" class="btn btn-default" data-toggle="button" aria-pressed="false" autocomplete="off"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Comment</button>
-				</blockquote>
-			</div>
-			<div class="col-sm-offset-2">
-				<blockquote>
-				  <p>Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
-				  <small>Joshua Paolo Badillo in <cite title="Source Title">Group 2<br/><br/></cite></small>
-				  <button type="button" class="btn btn-default" data-toggle="button" aria-pressed="false" autocomplete="off"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Comment</button>
-				</blockquote>
-			</div>
-			<div class="col-sm-offset-2">
-				<blockquote>
-				  <p>Lorem ipsum dolor sit amet, consectetur.</p>
-				  <small>Jan Patrick Claro in <cite title="Source Title">Group 2<br/><br/></cite></small>
-				  <button type="button" class="btn btn-default" data-toggle="button" aria-pressed="false" autocomplete="off"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Comment</button>
-				</blockquote>
-			</div>
-			<div class="col-sm-offset-2">
-				<blockquote>
-				  <p>Lorem ipsum dolor sit amet, consectetur adipiscing.</p>
-				  <small>Alexander Pascual in <cite title="Source Title">Group 4<br/><br/></cite></small>
-				  <button type="button" class="btn btn-default" data-toggle="button" aria-pressed="false" autocomplete="off"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Comment</button>
-				</blockquote>
-			</div>
-			<div class="col-sm-offset-2">
-				<blockquote>
-				  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer suscipit.</p>
-				  <small>Ross Benedict Decena in <cite title="Source Title">Group 3<br/><br/></cite></small>
-				  <button type="button" class="btn btn-default" data-toggle="button" aria-pressed="false" autocomplete="off"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Comment</button>
-				</blockquote>
-			</div>
+			<?php
+				if(is_array($home_contents) || is_object($home_contents)){
+					foreach($home_contents as $object_home){
+						echo'<div class="col-sm-offset-2">
+							<blockquote>
+								<p>' . $object_home->post_content .'</p>
+								<small>' . $object_home->poster_name . ' posted in <cite title="Source Title">'. $object_home->group_name .'<br/><br/></cite></small>
+								<form method="POST" action="<'. base_url('Home/getComment') .'>">
+									<input type="text" class="form-control hidden" name="postid" id="search" value="'. $object_home->post_id .'">
+									<button type="button" class="btn btn-default" data-toggle="collapse" aria-pressed="false" autocomplete="off" data-target="#demo"><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;Comment</button>
+								</form>
+								<div id="demo" class="collapse out"
+									<div class="forn-group">
+										<label for="comment"></label>
+										<textarea class="form-control" rows="5" id="comment" placeholder="Enter Comment..."></textarea>
+										<p></p>
+										<div class="pull-right">
+											<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span></button>
+										</div>
+									</div>
+								</div>
+							</blockquote>
+						</div>';
+					}
+				}
+			?>
 		</div>
 	</body>
 </html>
